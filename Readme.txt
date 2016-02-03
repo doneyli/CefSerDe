@@ -1,0 +1,78 @@
+Example Usage:
+
+ADD JAR CefSerDe-0.0.1-SNAPSHOT.jar;
+ 
+CREATE EXTERNAL TABLE Cisco
+(
+Dt  STRING,
+Time  STRING,
+Host  STRING,
+CEF_Version  INT,
+Device_Vendor  STRING,
+Device_Product  STRING,
+Device_Version  STRING,
+Signature_ID  STRING,
+Name  STRING,
+Severity  INT,
+eventId  BIGINT,
+externalId  INT,
+art  BIGINT,
+cat  STRING,
+rt  TimeStamp,
+dhost  STRING,
+dst  STRING,
+destinationZoneURI  STRING,
+duser  STRING,
+cs2  STRING,
+cs5  STRING,
+cs6  STRING,
+cn1  BIGINT,
+cs2Label  STRING,
+cs5Label  STRING,
+cn1Label  STRING,
+ahost  STRING,
+agt  STRING,
+agentZoneURI  STRING,
+av  STRING,
+atz  STRING,
+aid  STRING,
+at  STRING,
+dvchost  STRING,
+dvc  STRING,
+deviceZoneURI  STRING,
+dtz  STRING,
+cefVer  FLOAT,
+ad_timezone  STRING,
+ad_total__seg  INT,
+ad_segid  INT,
+ad_Step  INT,
+ad_NetworkDeviceName  STRING,
+ad_Acct_Terminate_Cause  STRING,
+ad_NAS_Port_Type  STRING,
+ad_RequestLatency  INT,
+ad_Tunnel_Client_EndpoINT  STRING,
+ad_Acct_Session_Id  STRING,
+ad_Calling_Station_ID  STRING,
+ad_Framed_Protocol  STRING,
+ad_Acct_Input_Octets  STRING,
+ad_AcsSessionID  STRING,
+ad_Acct_Authentic  STRING,
+ad_Class  STRING,
+ad_Framed_IP_Address  STRING,
+ad_Acct_Session_Time  INT,
+ad_Acct_Status_Type  STRING,
+ad_Acct_Output_Packets  INT,
+ad_Acct_Delay_Time  INT,
+ad_Acct_Output_Octets  STRING,
+ad_Acct_Input_Packets  INT,
+ad_Called_Station_ID  STRING,
+ad_AuditSessionId  STRING)
+row format serde 'com.cloudera.sa.CefSerDe.CefSerDe'
+with serdeproperties (
+   "separator" = "\\|",
+   "numHeaders"    = "11",
+    "keys" = "Dt,Time,Host,CEF:Version,Device_Vendor,Device_Product,Device_Version,Signature_ID,Name,Severity,eventId,externalId,art,cat,rt,dhost,dst,destinationZoneURI,duser,cs2,cs5,cs6,cn1,cs2Label,cs5Label,cn1Label,ahost,agt,agentZoneURI,av,atz,aid,at,dvchost,dvc,deviceZoneURI,dtz,_cefVer,ad.timezone,ad.total__seg,ad.segid,ad.Step,ad.NetworkDeviceName,ad.Acct-Terminate-Cause,ad.NAS-Port-Type,ad.RequestLatency,ad.Tunnel-Client-Endpoint,ad.Acct-Session-Id,ad.Calling-Station-ID,ad.Framed-Protocol,ad.Acct-Input-Octets,ad.AcsSessionID,ad.Acct-Authentic,ad.Class,ad.Framed-IP-Address,ad.Acct-Session-Time,ad.Acct-Status-Type,ad.Acct-Output-Packets,ad.Acct-Delay-Time,ad.Acct-Output-Octets,ad.Acct-Input-Packets,ad.Called-Station-ID,ad.AuditSessionId"
+ 
+  )
+STORED AS TEXTFILE
+LOCATION '/data/cisco';
