@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CEFMessage extends Message {
-	final  static  Pattern date_ = Pattern.compile("(\\w\\w\\w \\d\\d) (\\d\\d:\\d\\d:\\d\\d) (.+) (.+)");
+	final  static  Pattern date_ = Pattern.compile("^(\\w\\w\\w\\s{1,2}\\d{1,2}) (\\d\\d:\\d\\d:\\d\\d) (.+) (.+)");
 	
 	
 	
